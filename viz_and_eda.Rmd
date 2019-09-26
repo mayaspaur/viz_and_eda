@@ -67,4 +67,49 @@ weather_df %>%
   geom_point(aes(size=prcp), alpha = .2) + 
   geom_smooth(size= 2, se = FALSE)
 
+weather_df %>%
+  ggplot(aes(x = date, y = tmax, color = name)) + 
+  geom_smooth(size= 2, se = FALSE)
+
+```
+
+2d density
+
+```{r}
+weather_df %>%
+  ggplot(aes(x = tmin, y = tmax)) + 
+  geom_bin2d() +
+  facet_grid(~name)
+
+```
+
+#More kinds of plots: univariate
+
+```{r}
+weather_df %>%
+  ggplot(aes(x=tmax, fill = name))+
+  geom_histogram()+
+  facet_grid(~name)
+```
+
+```{r}
+weather_df %>%
+  ggplot(aes(x=tmax, fill = name))+
+  geom_density(alpha=.3)
+```
+
+Other univariate plots: 
+
+```{r}
+weather_df %>%
+  ggplot(aes(x = name, y = tmax)) +
+  geom_boxplot()
+
+weather_df %>%
+  ggplot(aes(x = name, y = tmax)) +
+  geom_violin()
+
+weather_df %>%
+  ggplot(aes(x = tmax, y = name)) +
+  geom_density_ridges()
 ```
